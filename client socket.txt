@@ -1,0 +1,33 @@
+import java.net.Socket;
+
+public class Client_sock {
+
+    
+    public static void main(String[] args) {
+        try
+        {
+            Socket sock= new Socket("localhost",9999);
+            
+            PrintStream ps= new PrintStream(sock.getOutputStream());
+            
+            System.out.print("Enter something : ");
+            
+            InputStreamReader rd= new InputStreamReader(System.in);
+            BufferedReader ed= new BufferedReader(rd);
+            
+            String temp = ed.readLine();
+            
+            ps.println(temp);
+            
+            BufferedReader gt= new BufferedReader(new InputStreamReader(sock.getInputStream()));
+          
+            String st= gt.readLine();
+            System.out.print(st);
+        }
+        catch(Exception ex)
+        {
+            
+        }
+    }
+    
+}
